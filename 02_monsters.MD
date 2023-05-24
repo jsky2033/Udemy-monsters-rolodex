@@ -67,5 +67,16 @@ No matter where you import a CSS file, React will compile it into one big CSS fi
 
 ## Functional Components
 
-With this, all React does is return a function to run. 
+With this, all React does is return a function to run. Therefore it really does NOT have any lifecycles! It is simply a means of displaying data. Although Hooks can be used to REPLICATE the behavior of lifecycles.
+
+## useState
+
+useState, unlike setState works induvidually. So if you have multiple state values then you need multiple setState functions and vars. Each hook, hooks into one value
+
+
+## rendering + re-rendering
+
+In Class components, the whole code runs once when the component is first mounted and then the render() method runs when the state or props change. 
+
+By contrast, functional components ALWAYS run from top to bottom since they are just functions. However, the only time it runs is when state or props change. 
 
