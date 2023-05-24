@@ -67,5 +67,45 @@ No matter where you import a CSS file, React will compile it into one big CSS fi
 
 ## Functional Components
 
-With this, all React does is return a function to run. 
+With this, all React does is return a function to run. Therefore it really does NOT have any lifecycles! It is simply a means of displaying data. Although Hooks can be used to REPLICATE the behavior of lifecycles.
 
+## useState
+
+useState, unlike setState works induvidually. So if you have multiple state values then you need multiple setState functions and vars. Each hook, hooks into one value
+
+
+## rendering + re-rendering
+
+In Class components, the whole code runs once when the component is first mounted and then the render() method runs when the state or props change. 
+
+By contrast, functional components ALWAYS run from top to bottom since they are just functions. However, the only time it runs is when state or props change. 
+
+In addition, although Class Components re-render whenever setState is called, Functional Components will only re-render if the state change handler causes the property to actually change.
+
+<script>
+    setSearchField("paul");
+</script>
+
+The above will only run once since once it is changed, no state change will be detected. 
+
+## Infinite re-rendering due to requests
+
+Sometimes requests could result in infinite re-renders. This is because of two reasons:
+
+1. The state handler causes the state to change
+2. Even if the data retrieved from the foreign API has the SAME value, the data structure returned will have a different memory address than the one before. Thus React is seeing different data being set in the state every time the request occurs. Which means it will re-render every time the request occurs. 
+
+If the request takes place outside a hook then this will most certainly cause an infinite re-render of your app. 
+
+# useEffect
+
+In order to solve this issue, use the useEffect Hook. 
+
+1. [] ensures that this code will run once and only once. Use this for data GET requests. 
+2. [monsters, searchField] ensures that this code will be fire whenever the parameters are changed. Use this for data processing as you avoid having to do unecessary filters or loops (like with Class Components).
+
+In fact this is one key advantage over the Class Components:
+
+The code in componentDidUpdate will fire upon ANY state change. 
+
+The code in useEffect can be used to fire upon SPECIFIC state changes. 
