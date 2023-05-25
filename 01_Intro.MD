@@ -27,3 +27,11 @@ Npx can be used outside of simply create-react-app too!
 - Webpack: chunks your JS into component or page specific pieces so that the page only loads that specific piece of code for that part of the app. 
 - Babel: transpiles all your JS into a version all browsers can understand
 
+# Virtual DOM
+
+The Virtual DOM is a JS representation of the real DOM. When a change is made to the Virtual DOM, a virtual copy is created with the previous version called the Snapshot. 
+
+React will determine exactly which nodes need to change. Which ones need to be added and which ones need to be removed. Thus the virtual DOM is created with all the changes we would like it to have.
+
+React then compares the Virtual DOM Copy to the Virtual DOM Snapshot and sees exactly what needs to be changed. Once these changes are identified, they are executed on the real DOM. 
+
